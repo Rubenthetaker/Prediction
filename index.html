@@ -1,0 +1,213 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction King</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .login-form, .prediction-form {
+            display: none; /* Hidden by default */
+            margin-bottom: 20px;
+        }
+        .login-form input, .prediction-form input {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Prediction King</h1>
+    
+    <div class="login-form" id="loginForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div class="prediction-form" id="predictionForm">
+        <input type="number" id="number1" placeholder="Enter first number" required>
+        <input type="number" id="number2" placeholder="Enter second number" required>
+        <button onclick="makePrediction()">Make Prediction</button>
+        <button id="fetchData">Fetch Data</button>
+    </div>
+
+    
+    <script>
+        const passwordPrompt = document.getElementById('passwordPrompt');
+        const mainContent = document.getElementById('mainContent');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordMessage = document.getElementById('passwordMessage');
+
+        function checkPassword() {
+            const enteredPassword = passwordInput.value;
+            if (enteredPassword === 'MODX') { // Updated password
+                passwordPrompt.style.display = 'none';
+                mainContent.style.display = 'block';
+            } else {
+                passwordMessage.textContent = 'DHATT, PAY FOR PASSWORD';
+            }
+        }
+
+        const form = document.getElementById('predictionForm');
+        const resultDiv = document.getElementById('predictionResult');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const result1 = parseInt(document.getElementById('result1').value);
+            const result2 = parseInt(document.getElementById('result2').value);
+            const result3 = parseInt(document.getElementById('result3').value);
+
+            const calculatedValue = (result1 + result3) - result2;
+
+            let prediction;
+
+            switch (calculatedValue) {
+                case 1:
+                    prediction = "BIG 6 '8";
+                    break;
+                case 2:
+                    prediction = "BIG 5 '9";
+                    break;
+                case 3:
+                    prediction = "BIG 7 '9";
+                    break;
+                case 4:
+                    prediction = "BIG 7 '8";
+                    break;
+                case 0:
+                    prediction = "BIG 9 '8";
+                    break;
+                case 5:
+                    prediction = "SMALL 1 '2";
+                    break;
+                case 6:
+                    prediction = "SMALL 2 '3";
+                    break;
+                case 7:
+                    prediction = "SMALL 3 '1";
+                    break;
+                case 8:
+                    prediction = "SMALL 2 '3";
+                    break;
+                case 9:
+                    prediction = "SMALL 2 '1";
+                    break;
+                case 10:
+                    prediction = "BIG 9 '6";
+                    break;
+                case 11:
+                    prediction = "SMALL 0 '1";
+                    break;
+                case 12:
+                    prediction = "SMALL 0 '2";
+                    break;
+                case 13:
+                    prediction = "SMALL 1 '3";
+                    break;
+                case 14:
+                    prediction = "SMALL 2 '3 ";
+                    break;
+                case 20:
+                    prediction = "SMALL 4 '1";
+                    break;
+                case 15:
+                    prediction = "SMALL 3 '4";
+                    break;
+                case 16:
+                    prediction = "BIGG  5 '6";
+                    break;
+                case 17:
+                    prediction = "BIGG 7 '9";
+                    break;
+                case 18:
+                    prediction = "BIGG 6 '8";
+                    break;
+                case 19:
+                    prediction = "BIGG 6 '7";
+                    break;
+		case -1:
+                    prediction = "BIG 7 '5";
+                    break;
+                case -2:
+                    prediction = "BIG 9 '7";
+                    break;
+                case -3:
+                    prediction = "BIG 9 '5";
+                    break;
+                case -4:
+                    prediction = "BIG 9 '8";
+                    break;
+                case -5:
+                    prediction = "SMALL 2 '1";
+                    break;
+                case -6:
+                    prediction = "SMALL 0 '4";
+                    break;
+                case -7:
+                    prediction = "SMALL 3 '0";
+                    break;
+                case -8:
+                    prediction = "SMALL 0 '4";
+                    break;
+                case -9:
+                    prediction = "SMALL 2 '3";
+                    break;
+
+
+
+
+
+
+
+		default:
+                    prediction = "SKIPP.";
+            }
+
+            resultDiv.textContent = `Prediction: ${prediction}`;
+
+            // Shift results after 5 seconds
+            setTimeout(() => {
+                document.getElementById('result1').value = ''; // Clear the 1st result box
+                document.getElementById('result2').value = result1; // Shift 1st result to 2nd result box
+                document.getElementById('result3').value = result2; // Shift 2nd result to 3rd result box
+            }, 5000); // 500 milliseconds = 0.5 seconds
+        });
+    </script>
+        ENJOY EVERYONE
+</body>
+</html>
